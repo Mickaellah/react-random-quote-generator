@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function GenerateQuote({ handleClick, quoteText, quoteAuthor, quoteGenre}) {
     return (
@@ -8,8 +9,10 @@ export default function GenerateQuote({ handleClick, quoteText, quoteAuthor, quo
                 <p>{quoteText}</p>
             </div>
             <button>
-                <p><b>{quoteAuthor}</b></p>
-                <span>{quoteGenre}</span>
+                <Link to='/'>
+                    <p><b>{quoteAuthor}</b></p>
+                    <span>{quoteGenre}</span>
+                </Link>
             </button>
         </>
     )

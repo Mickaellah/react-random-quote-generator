@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import GenerateQuote from '../components/GenerateQuote';
+import {
+	BrowserRouter as Router,
+    Route,
+} from 'react-router-dom';
 
 export default function App() {
     const [ quote, setQuote ] = useState('');;
@@ -25,7 +28,9 @@ export default function App() {
 
     return (
         <>
-            <GenerateQuote handleClick={handleClick} {...quote}/>
+            <Router>
+                <Route path="/" render={() => <GenerateQuote handleClick={handleClick} {...quote}/>} />
+            </Router>
         </>
     )
 }
