@@ -1,36 +1,40 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
+// import { Route, Switch } from 'react-router-dom';
 import GenerateQuote from '../components/GenerateQuote';
 import {
 	BrowserRouter as Router,
-    Route,
+    Switch,
+	Route
 } from 'react-router-dom';
 
+import QuoteDetail from '../components/QuoteDetail';
+
 export default function App() {
-    const [ quote, setQuote ] = useState('');;
 
-    const randomQuote = "https://quote-garden.herokuapp.com/api/v2/quotes/random";
-
-    async function getQuotes() {
-        const res = await fetch(randomQuote);
-        const data = await res.json();
-        console.log(data);
-
-        setQuote(data.quote);
-    }
-
-    useEffect(() => {
-        getQuotes();
-    }, []);
-
-    const handleClick = useCallback(e => {
-        getQuotes();
-    }, []);
 
     return (
         <>
             <Router>
-                <Route path="/" render={() => <GenerateQuote handleClick={handleClick} {...quote}/>} />
+                <Switch>
+                    <Route path="/quote/:id">
+                        <QuoteDetail />
+                    </Route>
+                    <Route path="/">
+                        <GenerateQuote />
+                    </Route>
+                </Switch>
             </Router>
         </>
     )
 }
+
+{/* <Router>
+    <Switch>
+        <Route path="/quote/:id">
+            <QuoteDetail />
+        </Route>
+        <Route>
+            <GenerateQuote handleClick={handleClick} {...quote}/>
+        </Route>
+    <Switch/>
+</Router> */}

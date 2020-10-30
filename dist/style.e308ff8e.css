@@ -1,5 +1,36 @@
+body {
+    max-width: 400px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+
+#root {
+    background-color: aliceblue;
+    padding: 46px;
+    border-radius: 10px;
+}
+
+.generate_bbtn {
+    margin-inline-start: 250px;
+    background-color: transparent;
+    border: none;
+}
+
 button {
     cursor: pointer;
+}
+
+.button {
+    margin-block-start: 32px;
+    background-color: black;
+    color: white;
+    padding: 16px;
+    width: 100%;
+}
+
+.bttn_text {
+    display: flex;
+    justify-content: space-between;
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
