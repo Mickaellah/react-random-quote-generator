@@ -33,4 +33,9 @@ button {
     justify-content: space-between;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 /*# sourceMappingURL=/style.e308ff8e.css.map */

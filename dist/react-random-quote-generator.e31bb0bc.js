@@ -33899,9 +33899,9 @@ function GenerateQuote() {
     viewBox: "0 0 24 24",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/_react.default.createElement("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    "stroke-width": "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
     d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "quote_text"
@@ -33921,9 +33921,9 @@ function GenerateQuote() {
     viewBox: "0 0 24 24",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/_react.default.createElement("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    "stroke-width": "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
     d: "M17 8l4 4m0 0l-4 4m4-4H3"
   }))))))));
 }
@@ -33943,26 +33943,49 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const randomQuote = "https://quote-garden.herokuapp.com/api/v2/quotes/random";
+const randomQuote = "https://quote-garden.herokuapp.com/api/v2/authors/";
+const author = '?page=1&limit=10';
 
 function QuoteDetail() {
   const {
-    id
+    authorName
   } = (0, _reactRouterDom.useParams)();
-  const [quote, setQuote] = (0, _react.useState)({});
+  const [quote, setQuote] = (0, _react.useState)([]);
 
   async function getQuotes() {
-    const res = await fetch(randomQuote);
+    const res = await fetch(randomQuote + authorName + author);
     const data = await res.json();
-    console.log(data);
-    setQuote(data.quote);
+    console.log(data.quotes);
+    setQuote(data.quotes);
   }
 
   (0, _react.useEffect)(() => {
     getQuotes();
-  }, [id]);
-  if (!quote.quoteText) return null;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, quote.quoteAuthor ? /*#__PURE__*/_react.default.createElement("p", null, quote.quoteText) : '');
+  }, []);
+  const handleClick = (0, _react.useCallback)(() => {
+    getQuotes();
+  }, []);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+    className: "generate_bbtn",
+    onClick: handleClick
+  }, "random ", /*#__PURE__*/_react.default.createElement("svg", {
+    className: "w-6 h-6",
+    fill: "none",
+    width: "16px",
+    height: "16px",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+  }))), quote.map(quote => {
+    return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", {
+      key: quote.authorName
+    }, "console.log(", quote.quoteText, ");"));
+  }));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"page/App.js":[function(require,module,exports) {
 "use strict";
@@ -34043,7 +34066,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60012" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51905" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
