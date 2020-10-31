@@ -2,12 +2,27 @@ body {
     max-width: 400px;
     margin-inline-start: auto;
     margin-inline-end: auto;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
 }
 
 #root {
     background-color: aliceblue;
     padding: 46px;
     border-radius: 10px;
+}
+
+li {
+    margin-top: 48px;
+    list-style: none;
+    border-left: 2px solid yellow;
+    padding-inline-start: 32px;
 }
 
 .generate_bbtn {

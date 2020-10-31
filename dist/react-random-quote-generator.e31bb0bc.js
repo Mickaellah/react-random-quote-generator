@@ -33905,10 +33905,10 @@ function GenerateQuote() {
     d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "quote_text"
-  }, /*#__PURE__*/_react.default.createElement("p", null, quote.quoteText)), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("q", null, quote.quoteText))), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/quote/:id"
+    to: `/authors/${quote.quoteAuthor}`
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "bttn_text"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("b", null, quote.quoteAuthor)), /*#__PURE__*/_react.default.createElement("span", null, quote.quoteGenre)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("svg", {
@@ -33948,12 +33948,12 @@ const author = '?page=1&limit=10';
 
 function QuoteDetail() {
   const {
-    authorName
+    id
   } = (0, _reactRouterDom.useParams)();
   const [quote, setQuote] = (0, _react.useState)([]);
 
   async function getQuotes() {
-    const res = await fetch(randomQuote + authorName + author);
+    const res = await fetch(randomQuote + id + author);
     const data = await res.json();
     console.log(data.quotes);
     setQuote(data.quotes);
@@ -33981,10 +33981,10 @@ function QuoteDetail() {
     strokeLinejoin: "round",
     strokeWidth: "2",
     d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-  }))), quote.map(quote => {
+  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, id)), quote.map(quote => {
     return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", {
-      key: quote.authorName
-    }, "console.log(", quote.quoteText, ");"));
+      key: quote.id
+    }, /*#__PURE__*/_react.default.createElement("q", null, quote.quoteText)));
   }));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"page/App.js":[function(require,module,exports) {
@@ -34008,7 +34008,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import { Route, Switch } from 'react-router-dom';
 function App() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/quote/:id"
+    path: "/authors/:id"
   }, /*#__PURE__*/_react.default.createElement(_QuoteDetail.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_GenerateQuote.default, null)))));
@@ -34066,7 +34066,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51905" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

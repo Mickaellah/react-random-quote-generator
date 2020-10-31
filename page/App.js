@@ -16,7 +16,7 @@ export default function App() {
         <>
             <Router>
                 <Switch>
-                    <Route path="/quote/:id">
+                    <Route path="/authors/:id">
                         <QuoteDetail />
                     </Route>
                     <Route path="/">
